@@ -4,29 +4,28 @@ import { useRouter } from 'next/router';
 import * as Fathom from 'fathom-client';
 
 import '../styles/globals.css';
+import 'tailwindcss/tailwind.css';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
+  const router = useRouter();
 
-    const router = useRouter()
+  useEffect(() => {
+    Fathom.load('RBWBPKPV', {
+      url: 'https://mite.mikkeldamm.com/script.js',
+    });
 
-    useEffect(() => {
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
 
-        Fathom.load('RBWBPKPV', {
-            url: 'https://mite.mikkeldamm.com/script.js',
-        })
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
 
-        function onRouteChangeComplete() {
-            Fathom.trackPageview()
-        }
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+  }, []);
 
-        router.events.on('routeChangeComplete', onRouteChangeComplete)
-
-        return () => {
-            router.events.off('routeChangeComplete', onRouteChangeComplete)
-        }
-    }, [])
-
-    return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default App;
