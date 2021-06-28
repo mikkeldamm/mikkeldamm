@@ -1,16 +1,17 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-style: normal;
-    font-display: auto;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    color: #000;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-style: normal;
+  font-display: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #151314;
+  background-color: #f2e8de;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }

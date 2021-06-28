@@ -6,11 +6,13 @@ export default function Home() {
   return (
     <MainLayout>
       <Head>
-        <title>Create Next App</title>
+        <title>Mikkel Damm - Portfolio</title>
       </Head>
-      <main>
-        <h1 className="">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <main className="p-10">
+        <h1 className="flex text-7xl">
+          <span role="img" aria-label="Hello" className="block animate-wiggle origin-[70%]">
+            👋🏻
+          </span>
         </h1>
       </main>
     </MainLayout>
