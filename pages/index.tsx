@@ -14,7 +14,7 @@ export default function Home() {
             <span role="img" aria-label="Hello" className="block animate-wiggle origin-[70%] mr-4">
               👋🏻
             </span>
-            I&apos;m Mikkel Damm a developer, entrepreneur and creative gay from Denmark
+            I&apos;m Mikkel Damm a developer, entrepreneur and creative guy from Denmark
           </h1>
         </div>
       </main>
