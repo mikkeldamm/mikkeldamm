@@ -12,6 +12,9 @@ module.exports = {
       primary: '#151314',
     },
     extend: {
+      screens: {
+        xs: '530px',
+      },
       keyframes: {
         wiggle: {
           '0%': { transform: 'rotate( 0.0deg)' },
@@ -26,6 +29,9 @@ module.exports = {
       },
       animation: {
         wiggle: 'wiggle 2.5s ease-in-out',
+      },
+      borderRadius: {
+        fancy: '67% 33% 56% 44% / 65% 58% 42% 35%',
       },
     },
   },
