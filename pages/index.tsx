@@ -47,7 +47,14 @@ export default function Home() {
             Hi, I&apos;m a developer, entrepreneur and creative guy from Denmark
           </h1>
           <div className="relative flex-shrink-0 block w-48 h-48 ml-auto overflow-hidden rounded-fancy md:w-72 md:h-72">
-            <Image src={MikkelDammPhoto} layout="fill" objectFit="cover" alt="Mikkel Damm" />
+            <Image
+              src={MikkelDammPhoto}
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              alt="Mikkel Damm"
+              priority={true}
+            />
           </div>
         </div>
       </main>
