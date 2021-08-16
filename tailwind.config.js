@@ -7,11 +7,12 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
-      background: '#F2E8DE',
-      primary: '#151314',
-    },
     extend: {
+      colors: {
+        background: '#fff',
+        primary: '#151314',
+        secondary: '#363636',
+      },
       screens: {
         xs: '530px',
       },
