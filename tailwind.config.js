@@ -12,6 +12,7 @@ module.exports = {
         background: '#fff',
         primary: '#151314',
         secondary: '#363636',
+        action: '#ffb400',
       },
       screens: {
         xs: '530px',

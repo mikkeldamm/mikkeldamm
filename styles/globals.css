@@ -11,6 +11,23 @@ body {
   color: #151314;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 * {
   box-sizing: border-box;
+}
+
+::-moz-selection {
+  background: #ffb400;
+  color: #ffffff;
+}
+::selection {
+  background: #ffb400;
+  color: #ffffff;
+}
+
+.rerun:hover {
+  animation-iteration-count: infinite;
 }
