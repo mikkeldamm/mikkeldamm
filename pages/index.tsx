@@ -5,6 +5,7 @@ import Image from 'next/image';
 import MainLayout from 'components/layouts/MainLayout';
 
 import MikkelDammPhoto from 'public/images/mikkeldamm.jpg';
+import WavingHandIcon from 'public/images/waving-hand.png';
 
 export default function Home() {
   return (
@@ -50,13 +51,19 @@ export default function Home() {
         </nav>
       </header>
       <main className="max-w-screen-xl px-5 pt-2 m-auto mb-10 md:pt-10 lg:pt-28">
-        <div className="mb-2 text-3xl md:mb-6 md:text-6xl">
+        <div className="mb-2 md:mb-6">
           <span
             role="img"
             aria-label="Hello"
-            className="inline-block animate-wiggle origin-[70%] mr-4 rerun"
+            className="relative h-8 w-8 md:h-14 md:w-14 inline-block animate-wiggle origin-[70%] mr-4 rerun"
           >
-            👋🏻
+            <Image
+              src={WavingHandIcon}
+              layout="fill"
+              objectFit="cover"
+              alt="Hello, I'm Mikkel Damm"
+              priority={true}
+            />
           </span>
         </div>
         <h1 className="text-3xl font-bold text-primary lg:w-4/5 md:text-7xl">
