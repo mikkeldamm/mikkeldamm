@@ -4,52 +4,25 @@ import Image from 'next/image';
 
 import MainLayout from 'components/layouts/MainLayout';
 
-import MikkelDammPhoto from 'public/images/mikkeldamm.jpg';
 import WavingHandIcon from 'public/images/waving-hand.png';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    if (!window) {
+      return;
+    }
+
+    setTimeout(() => {
+      window.scrollTo(0, 1);
+    }, 1000);
+  }, []);
+
   return (
     <MainLayout>
       <Head>
         <title>Mikkel Damm - Freelance Developer from Denmark</title>
       </Head>
-      <header className="relative flex items-center h-24 max-w-screen-xl p-5 mx-auto">
-        <Link href="/">
-          <a className="relative flex items-center font-semibold">
-            <div className="relative mr-3 overflow-hidden rounded-full w-7 h-7">
-              <Image
-                src={MikkelDammPhoto}
-                layout="fill"
-                objectFit="cover"
-                placeholder="blur"
-                alt="Mikkel Damm"
-                priority={true}
-              />
-            </div>
-            Mikkel<span className="inline md:hidden">.</span>
-            <span className="hidden md:inline">&nbsp;Damm.</span>
-          </a>
-        </Link>
-        <nav className="ml-auto font-bold">
-          <ul className="flex">
-            <li className="mr-4">
-              <Link href="/">
-                <a className="transition-colors hover:text-action">about.</a>
-              </Link>
-            </li>
-            <li className="mr-4">
-              <Link href="/work">
-                <a className="transition-colors hover:text-action">work.</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/writing">
-                <a className="transition-colors hover:text-action">writing.</a>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <main className="max-w-screen-xl px-5 pt-2 m-auto mb-10 md:pt-10 lg:pt-28">
         <div className="mb-2 md:mb-6">
           <span
@@ -67,7 +40,8 @@ export default function Home() {
           </span>
         </div>
         <h1 className="text-3xl font-bold text-primary lg:w-4/5 md:text-7xl">
-          Freelance developer, entrepreneur and creative guy from Denmark.
+          Freelance developer, entrepreneur and creative guy from Denmark
+          <span className="text-action">.</span>
         </h1>
         <p className="block mt-6 mb-10 text-lg tracking-tight text-secondary lg:w-2/3">
           For more than 10 years, I have been working as a frontend developer at large companies to
@@ -100,52 +74,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-      <footer className="border-t border-gray-100">
-        <div className="max-w-screen-xl px-5 py-8 m-auto">
-          <ul className="flex flex-wrap font-semibold">
-            <li className="mr-4">
-              <a
-                href="https://github.com/mikkeldamm"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="transition-colors hover:text-[#6e5494]"
-              >
-                github.
-              </a>
-            </li>
-            <li className="mr-4">
-              <a
-                href="https://www.linkedin.com/in/mikkeldamm/"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="transition-colors hover:text-[#0b65c2]"
-              >
-                linkedin.
-              </a>
-            </li>
-            <li className="mr-4">
-              <a
-                href="https://twitter.com/MikkelDamm"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="transition-colors hover:text-[#1da1f1]"
-              >
-                twitter.
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://unsplash.com/@dammeren"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="transition-colors hover:text-[#8f7a69]"
-              >
-                unsplash.
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </MainLayout>
   );
 }

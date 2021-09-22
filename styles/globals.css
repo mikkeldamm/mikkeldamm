@@ -20,12 +20,10 @@ body {
 }
 
 ::-moz-selection {
-  background: #ffb400;
-  color: #ffffff;
+  background: #fffbd5;
 }
 ::selection {
-  background: #ffb400;
-  color: #ffffff;
+  background: #fffbd5;
 }
 
 .rerun:hover {
