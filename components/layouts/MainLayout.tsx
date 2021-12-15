@@ -24,12 +24,7 @@ const MainLayout = ({ children }: Props) => {
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://mikkeldamm.com" />
         <meta property="twitter:title" content="Mikkel Damm - Freelance Developer from Denmark" />
-
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         <base href="/" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

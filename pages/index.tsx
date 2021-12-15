@@ -5,19 +5,8 @@ import Image from 'next/image';
 import MainLayout from 'components/layouts/MainLayout';
 
 import WavingHandIcon from 'public/images/waving-hand.png';
-import { useEffect } from 'react';
 
 export default function Home() {
-  useEffect(() => {
-    if (!window) {
-      return;
-    }
-
-    setTimeout(() => {
-      window.scrollTo(0, 1);
-    }, 1000);
-  }, []);
-
   return (
     <MainLayout>
       <Head>
