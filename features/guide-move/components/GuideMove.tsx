@@ -167,6 +167,11 @@ const handleOnPointerDown = (
   drawPadRefCurrent = drawPadRef.current;
   logoRefCurrent = logoRef.current;
 
+  const body = document.querySelector('body');
+  if (body) {
+    body.style.userSelect = 'none';
+  }
+
   window.addEventListener('pointermove', handleOnPointerMove);
   window.addEventListener('pointerup', handleOnPointerUp);
 
