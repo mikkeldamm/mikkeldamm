@@ -29,8 +29,8 @@ export default function Home() {
         return;
       }
 
-      window.addEventListener('mousemove', onMousemove);
-      window.addEventListener('mouseup', onMouseup);
+      window.addEventListener('pointermove', onMousemove);
+      window.addEventListener('pointerup', onMouseup);
 
       document.getElementById('lars')?.remove();
       ref.current.style.pointerEvents = 'all';
@@ -58,8 +58,8 @@ export default function Home() {
 
     const onMouseup = (e: any) => {
       path = null;
-      window.removeEventListener('mousemove', onMousemove);
-      window.removeEventListener('mouseup', onMouseup);
+      window.removeEventListener('pointermove', onMousemove);
+      window.removeEventListener('pointerup', onMouseup);
       if (ref.current) {
         ref.current.style.pointerEvents = 'none';
       }
@@ -149,10 +149,10 @@ export default function Home() {
     };
 
     gsap.registerPlugin(MotionPathPlugin);
-    window.addEventListener('mousedown', onMousedown);
+    window.addEventListener('pointerdown', onMousedown);
 
     return () => {
-      window.removeEventListener('mousedown', onMousedown);
+      window.removeEventListener('pointerdown', onMousedown);
     };
   }, []);
 
