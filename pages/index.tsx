@@ -16,7 +16,7 @@ export default function Home() {
     }
 
     var strokeWidth = 2;
-    var bufferSize = 8;
+    var bufferSize = 2;
 
     var rect: any;
     var path: SVGPathElement | null = null;
@@ -50,7 +50,6 @@ export default function Home() {
 
     const onMousemove = (e: any) => {
       if (path) {
-        anyMove = true;
         appendToBuffer(getMousePosition(e));
         updateSvgPath();
       }
@@ -145,6 +144,7 @@ export default function Home() {
 
         // Set the complete current path coordinates
         path?.setAttribute('d', strPath + tmpPath);
+        anyMove = true;
       }
     };
 
@@ -161,23 +161,7 @@ export default function Home() {
       <Head>
         <title>Mikkel Damm - Freelance Developer from Denmark</title>
       </Head>
-      <main className="max-w-screen-xl px-5 pt-2 m-auto mb-10 md:pt-10 lg:pt-[135px]">
-        {/*<div className="mb-2 md:mb-6">
-          <span
-            role="img"
-            aria-label="Hello"
-            className="relative h-8 w-8 md:h-14 md:w-14 inline-block animate-wiggle origin-[70%] mr-4 rerun"
-          >
-            <Image
-              src={WavingHandIcon}
-              layout="fill"
-              objectFit="cover"
-              alt="Hello, I'm Mikkel Damm"
-              priority={true}
-            />
-          </span>
-        </div>
-  */}
+      <main className="max-w-screen-xl px-5 pt-2 m-auto mb-10 md:pt-10 lg:pt-[135px] select-none">
         <div className="relative">
           <div className="w-56 mb-14">
             <svg
