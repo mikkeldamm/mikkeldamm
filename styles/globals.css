@@ -13,18 +13,3 @@ body {
 body {
   overflow-y: scroll;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-::-moz-selection {
-  background: #fffbd5;
-}
-::selection {
-  background: #fffbd5;
-}
-
-.rerun:hover {
-  animation-iteration-count: infinite;
-}

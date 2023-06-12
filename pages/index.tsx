@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import MainLayout from 'components/Layouts/MainLayout';
+import MainLayout from 'components/layouts/MainLayout';
 import Logo from 'components/Logo/Logo';
-
-import GuideMove from 'features/guide-move/components/GuideMove';
 
 export default function Home() {
   return (
@@ -13,13 +11,7 @@ export default function Home() {
         <title>Mikkel Damm - Freelance Developer from Denmark</title>
       </Head>
       <main className="max-w-screen-xl px-5 pt-2 m-auto mb-10 md:pt-10 lg:pt-[135px]">
-        <div className="relative">
-          <div className="w-56 mb-14">
-            <GuideMove>
-              <Logo />
-            </GuideMove>
-          </div>
-        </div>
+        <Logo />
         <h1 className="text-3xl font-bold text-primary lg:w-4/5 md:text-7xl">
           Freelance developer, entrepreneur and creative guy from Denmark
           <span className="text-action">.</span>
