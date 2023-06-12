@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const projects = await projectResponse.json();
-  const units = projects?.[0]?.units || 1;
+  const units = projects?.[0]?.units || 0;
   const hasSentSms = await get('hasSentSms');
 
   if (!hasSentSms && units > 0) {
