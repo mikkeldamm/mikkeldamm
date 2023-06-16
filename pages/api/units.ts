@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (!hasSentSms && units > 0) {
     await vonage.sms.send({
-      from: '16193754141',
+      from: '4540170050',
       to: '4521746766',
       text: `Der er ${units} ledig${units > 1 ? 'e' : ''} bolig${
         units > 1 ? 'er' : ''
