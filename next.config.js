@@ -1,7 +1,7 @@
 module.exports = {
   experimental: {
     outputFileTracingIncludes: {
-      '/api/sparpaavvs/lemu': ['./tmp/**/*'],
+      '/api/sparpaavvs/lemu': ['./tmp/lemu.csv'],
     },
   },
 };
