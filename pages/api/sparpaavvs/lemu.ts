@@ -1,6 +1,7 @@
 import { Client } from 'basic-ftp';
 import { readFileSync } from 'fs';
 import { NextApiRequest, NextApiResponse } from 'next';
+import path from 'path';
 
 export const uploadFile = async (path: string, file: File | Blob | Buffer) => {
   try {
@@ -38,8 +39,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       password: 'cWRWVMCk2s76L7jC',
       secure: false,
     });
-    await client.downloadTo('./lemu.csv', '/FromLEMU/pricat/LM_VVS_SpaarpaaVVS.csv');
-    const lemuCsv = readFileSync('./lemu.csv');
+
+    const csvPath = path.join(process.cwd(), '/tmp/lemu.csv');
+    await client.downloadTo(csvPath, '/FromLEMU/pricat/LM_VVS_SpaarpaaVVS.csv');
+    const lemuCsv = readFileSync(csvPath);
     await uploadFile('sparpaavvs/lemu.csv', lemuCsv);
   } catch (err) {
     console.log('Lemu CSV error', err);
