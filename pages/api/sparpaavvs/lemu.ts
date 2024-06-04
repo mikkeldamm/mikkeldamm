@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const lemuCsv = readFileSync('./lemu.csv');
     await uploadFile('sparpaavvs/lemu.csv', lemuCsv);
   } catch (err) {
-    console.log(err);
+    console.log('Lemu CSV error', err);
   } finally {
     client.close();
   }
