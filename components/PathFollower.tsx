@@ -95,10 +95,16 @@ export function PathFollower() {
         }, 520);
       }
       const logo = logoRef.current;
-      if (logo) {
-        // Ease from the parked spot/size back to rest, then hand the face back.
+      const base = baseRef.current;
+      if (logo && base) {
+        // The face is viewport-anchored at `base`; aim it at the badge's CURRENT
+        // centre so it lands home correctly even if the page was scrolled.
+        const badge = logo.parentElement?.getBoundingClientRect();
+        const home = badge
+          ? { x: badge.left + badge.width / 2 - base.x, y: badge.top + badge.height / 2 - base.y }
+          : { x: 0, y: 0 };
         logo.style.transition = 'transform 650ms cubic-bezier(0.22, 1, 0.36, 1)';
-        logo.style.transform = 'translate(0px, 0px) scale(1)';
+        logo.style.transform = `translate(${home.x}px, ${home.y}px) scale(1)`;
         const current = logo;
         releaseTimer = window.setTimeout(() => {
           if (logoRef.current === current) releaseLogo();
@@ -140,8 +146,9 @@ export function PathFollower() {
       const r = logo.getBoundingClientRect();
       baseRef.current = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
       logo.style.willChange = 'transform';
-      // Lift the face above the line overlay (fixed z-40) while it glides.
-      logo.style.position = 'relative';
+      // Anchor the face to the viewport (like the fixed line overlay) so the two
+      // stay aligned when the page scrolls, and lift it above the line (z-40).
+      logo.style.position = 'fixed';
       logo.style.zIndex = '50';
       logoRef.current = logo;
 
