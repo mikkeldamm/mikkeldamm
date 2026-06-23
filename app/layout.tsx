@@ -1,6 +1,7 @@
 import './global.css';
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { PathFollower } from '@/components/PathFollower';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteNav />
         <div className="flex-1">{children}</div>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
