@@ -8,7 +8,6 @@ import { person } from './site-data';
 const pages = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Photos', href: '/photos' },
 ];
 
 export function SiteNav() {

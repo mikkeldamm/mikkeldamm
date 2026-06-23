@@ -157,14 +157,3 @@ export const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/' },
   { label: 'Coding Moon', href: 'https://codingmoon.dev' },
 ];
-
-export type Photo = {
-  src: string;
-  alt: string;
-  /** aspect ratio hint for the grid, e.g. '3/2' or '4/5' */
-  ratio?: string;
-};
-
-// Photography lives on /photos. Drop image files in /public/images/photos
-// and list them here — the grid renders placeholders while this is empty.
-export const photos: Photo[] = [];

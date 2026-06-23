@@ -18,6 +18,18 @@
   --text-mega: clamp(2rem, 5.5vw, 3.1rem);
 }
 
+/* Dark theme — re-point the same tokens, so every utility adapts. */
+html.dark {
+  --color-paper: #15120f;
+  --color-ink: #f4efe8;
+  --color-muted: #b3a99b;
+  --color-faint: #8c8174;
+  --color-line: #2b2722;
+  --color-peach: #f2b48c;
+  --color-peach-deep: #e7a374;
+  color-scheme: dark;
+}
+
 @layer base {
   *,
   ::after,
