@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Logo from '@/components/Logo';
-import { person, intro, experience, products, facts, links } from '@/components/site-data';
+import { person, intro, experience, products } from '@/components/site-data';
 
 export const dynamic = 'force-static';
 
@@ -18,10 +18,10 @@ function Section({ label, children }: { label: string; children: React.ReactNode
 
 export default function Page() {
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-20 md:py-28">
+    <main className="mx-auto w-full max-w-2xl px-6 pb-10 pt-10 md:pt-16">
       {/* Hero */}
       <header className="mb-20">
-        <Logo className="mb-9 h-20 w-auto md:h-24" />
+        <Logo id="site-logo" className="mb-9 h-20 w-auto md:h-24" />
         <h1 className="text-mega font-extrabold leading-[1.02] tracking-[-0.03em] text-balance">
           {person.name}
           <span className="text-peach-deep">.</span>
@@ -33,7 +33,7 @@ export default function Page() {
       </header>
 
       <div className="flex flex-col gap-14">
-        {/* Intro / about — AI woven in */}
+        {/* Intro / about */}
         <Section label="Hello">
           <div className="flex flex-col gap-4 text-lg leading-relaxed text-muted [&_strong]:font-semibold [&_strong]:text-ink">
             {intro.map((p, i) => (
@@ -50,10 +50,10 @@ export default function Page() {
               priority
             />
             <a
-              href={person.resume}
+              href={`mailto:${person.email}`}
               className="group text-base font-medium text-ink underline decoration-line decoration-2 underline-offset-4 transition-colors hover:decoration-peach-deep"
             >
-              Read the full résumé
+              Say hello
               <span className="text-peach-deep transition-transform group-hover:translate-x-0.5"> →</span>
             </a>
           </div>
@@ -92,7 +92,7 @@ export default function Page() {
         </Section>
 
         {/* Own products */}
-        <Section label="Also">
+        <Section label="Projects">
           <ul className="flex flex-col gap-4">
             {products.map((p) => (
               <li key={p.name} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3">
@@ -115,54 +115,14 @@ export default function Page() {
             ))}
           </ul>
         </Section>
-
-        {/* Facts */}
-        <Section label="Bits">
-          <dl className="grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2">
-            <Fact term="Recognition" value={facts.awards} />
-            <Fact term="Education" value={facts.education} />
-            <Fact term="Certifications" value={facts.certs.join(' · ')} />
-            <Fact term="Languages" value={facts.languages.join(' · ')} />
-          </dl>
-        </Section>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-20 border-t border-line pt-8">
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-base font-medium">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <p className="mt-6 text-sm text-faint">
-          Built by hand with Next.js & Claude Code.
-          <span className="hidden sm:inline"> Try drawing a line anywhere — the mark will follow it.</span>
-        </p>
-      </footer>
     </main>
-  );
-}
-
-function Fact({ term, value }: { term: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-faint">{term}</dt>
-      <dd className="mt-0.5 text-base text-ink">{value}</dd>
-    </div>
   );
 }
 
 /** Wrap the first occurrence of a few key phrases in <strong> for rhythm. */
 function emphasize(text: string): string {
-  const phrases = ['16+ years', 'work well and look good', 'agentic AI coding and custom skills'];
+  const phrases = ['16+ years', 'work well and look good'];
   let out = text;
   for (const phrase of phrases) {
     out = out.replace(phrase, `<strong>${phrase}</strong>`);

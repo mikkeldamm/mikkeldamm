@@ -7,14 +7,13 @@ export const person = {
   tagline: 'Frontend roots, full-stack reach.',
   location: 'Copenhagen, Denmark',
   email: 'mikkel@codingmoon.dk',
-  resume: '/Profile.pdf',
 };
 
-// The hero / summary — spoken, not bulleted. AI is woven in, not a section.
+// The hero / summary — spoken, not bulleted.
 export const intro = [
   "I’m a self-taught developer with 16+ years of experience — from large-scale booking platforms to SaaS products. Most of that time I’ve spent trying to make things both work well and look good.",
   "That combination — solid engineering and a real eye for design — is what I’m most proud of. Most devs care about the code or the look. I try to care about both.",
-  "These days I run Coding Moon and lead development at Målbar, building LCA tooling from the ground up. I lean heavily on agentic AI coding and custom skills to ship more, faster — this site included — while keeping things simple to understand and easy to maintain for whoever touches the code next.",
+  "These days I run Coding Moon and lead development at Målbar, building LCA tooling from the ground up — shipping fast while keeping things simple to understand and easy to maintain for whoever touches the code next.",
 ];
 
 export type Job = {
@@ -93,17 +92,21 @@ export const products: Product[] = [
   { name: 'Grocery discovery', blurb: 'Local grocery discovery app. In progress.' },
 ];
 
-export const facts = {
-  awards: 'Developer of the Year',
-  certs: ['Certified Agile Tester (CAT)', 'ISTQB Software Tester Foundation'],
-  languages: ['Danish', 'English'],
-  education: 'HTX, Information Technology — Frederiksberg',
-};
-
 export const links = [
+  { label: 'Email', href: 'mailto:mikkel@codingmoon.dk' },
   { label: 'GitHub', href: 'https://github.com/mikkeldamm' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/' },
   { label: 'Twitter', href: 'https://twitter.com/MikkelDamm' },
-  { label: 'Unsplash', href: 'https://unsplash.com/@dammeren' },
   { label: 'Coding Moon', href: 'https://codingmoon.dev' },
 ];
+
+export type Photo = {
+  src: string;
+  alt: string;
+  /** aspect ratio hint for the grid, e.g. '3/2' or '4/5' */
+  ratio?: string;
+};
+
+// Photography lives on /photos. Drop image files in /public/images/photos
+// and list them here — the grid renders placeholders while this is empty.
+export const photos: Photo[] = [];

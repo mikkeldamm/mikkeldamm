@@ -1,6 +1,8 @@
 import './global.css';
 import type { Metadata, Viewport } from 'next';
 import { PathFollower } from '@/components/PathFollower';
+import { SiteNav } from '@/components/SiteNav';
+import { SiteFooter } from '@/components/SiteFooter';
 
 const title = 'Mikkel Damm Vind — Senior Full-Stack Developer';
 const description =
@@ -41,9 +43,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex min-h-dvh flex-col">
         <PathFollower />
-        {children}
+        <SiteNav />
+        <div className="flex-1">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );
