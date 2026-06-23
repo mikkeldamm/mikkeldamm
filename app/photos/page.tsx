@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 
 export default function PhotosPage() {
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 pb-10 pt-10 md:pt-16">
+    <main className="mx-auto w-full max-w-4xl px-6 pb-10 pt-8 md:px-8 md:pt-14">
       <header className="mb-12">
-        <h1 className="text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
-          Photos<span className="text-peach-deep">.</span>
+        <p className="text-lg text-faint md:text-xl">Photos</p>
+        <h1 className="mt-6 max-w-2xl text-mega font-medium leading-[1.14] tracking-[-0.015em] text-balance">
+          A few frames worth keeping<span className="text-muted"> — moments, light, and places from in and around Copenhagen.</span>
         </h1>
-        <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted text-balance">
-          A few frames worth keeping — moments, light, and places from in and around Copenhagen.
-        </p>
       </header>
 
       {photos.length > 0 ? (

@@ -1,26 +1,8 @@
 @import 'tailwindcss';
 
 /* ----------------------------------------------------------------------------
-   Inter (variable) — the typeface this whole system is tuned around.
-   Self-hosted from /public/fonts/Inter.
----------------------------------------------------------------------------- */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/fonts/Inter/Inter-roman.var.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/fonts/Inter/Inter-Italic.woff') format('woff');
-}
-
-/* ----------------------------------------------------------------------------
-   Design tokens — light & editorial. One accent: the logo's peach.
+   Design tokens — light & editorial. Instrument Sans is loaded by next/font
+   (see app/layout.tsx) and exposed as --font-instrument. One accent: peach.
 ---------------------------------------------------------------------------- */
 @theme {
   --color-paper: #faf9f7;
@@ -31,9 +13,9 @@
   --color-peach: #f2b48c;
   --color-peach-deep: #d98a5c;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --text-mega: clamp(2.6rem, 7vw, 5.2rem);
+  --text-mega: clamp(2rem, 5.5vw, 3.1rem);
 }
 
 @layer base {
@@ -60,7 +42,6 @@
     background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: 'cv05' 1, 'cv08' 1, 'ss03' 1, 'calt' 1;
     font-variant-ligatures: contextual;
     line-height: 1.6;
     text-rendering: optimizeLegibility;

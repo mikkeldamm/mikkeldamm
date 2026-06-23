@@ -1,10 +1,16 @@
-import { links } from './site-data';
+import { links, person } from './site-data';
 
 export function SiteFooter() {
   return (
-    <footer className="mx-auto w-full max-w-2xl px-6 pb-16 pt-12">
-      <div className="border-t border-line pt-8">
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-base font-medium">
+    <footer className="mx-auto w-full max-w-4xl px-6 pb-16 pt-12 md:px-8">
+      <div className="flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-base text-ink">© {new Date().getFullYear()} {person.name}.</p>
+          <p className="mt-1 text-sm text-faint">
+            Design, code, and the occasional photo from {person.location}.
+          </p>
+        </div>
+        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
           {links.map((l) => (
             <a
               key={l.label}
@@ -17,7 +23,6 @@ export function SiteFooter() {
             </a>
           ))}
         </nav>
-        <p className="mt-6 text-sm text-faint">© {new Date().getFullYear()} Mikkel Damm Vind</p>
       </div>
     </footer>
   );

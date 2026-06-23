@@ -1,8 +1,16 @@
 import './global.css';
 import type { Metadata, Viewport } from 'next';
+import { Instrument_Sans } from 'next/font/google';
 import { PathFollower } from '@/components/PathFollower';
 import { SiteNav } from '@/components/SiteNav';
 import { SiteFooter } from '@/components/SiteFooter';
+
+// The whole system is tuned around Instrument Sans — self-hosted at build by next/font.
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument',
+  display: 'swap',
+});
 
 const title = 'Mikkel Damm Vind — Senior Full-Stack Developer';
 const description =
@@ -42,7 +50,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={instrument.variable}>
       <body className="flex min-h-dvh flex-col">
         <PathFollower />
         <SiteNav />

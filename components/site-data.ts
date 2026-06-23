@@ -7,6 +7,9 @@ export const person = {
   tagline: 'Frontend roots, full-stack reach.',
   location: 'Copenhagen, Denmark',
   email: 'mikkel@codingmoon.dk',
+  // Hero statement — split on the first em dash for two-tone styling.
+  statement:
+    "I'm a developer in Copenhagen — making things that work well and look good. Most devs care about the code or the look. I try to care about both. Where I'm strongest is the bigger picture: systems and architecture, and how all the pieces fit together.",
 };
 
 // The hero / summary — spoken, not bulleted.
@@ -14,6 +17,7 @@ export const intro = [
   "I’m a self-taught developer with 16+ years of experience — from large-scale booking platforms to SaaS products. Most of that time I’ve spent trying to make things both work well and look good.",
   "That combination — solid engineering and a real eye for design — is what I’m most proud of. Most devs care about the code or the look. I try to care about both.",
   "These days I run Coding Moon and lead development at Målbar, building LCA tooling from the ground up — shipping fast while keeping things simple to understand and easy to maintain for whoever touches the code next.",
+  "A lot of how I build now is agentic — I lean on AI coding agents and tight feedback loops to move faster, while staying the person who understands and owns every line that ships.",
 ];
 
 export type Job = {
@@ -77,26 +81,80 @@ export const experience: Job[] = [
 
 export type Product = {
   name: string;
+  tagline: string;
   blurb: string;
+  tags: string[];
   url?: string;
 };
 
-// Own products / side projects.
+// Own products — mirrored from codingmoon.dk.
 export const products: Product[] = [
-  { name: 'Ønsker', blurb: 'A wishlist platform.', url: 'https://ønsker.dk' },
   {
-    name: 'Instabolig',
-    blurb: "Tracks estate listings from realtors’ Instagram accounts and notifies you of new ones.",
+    name: 'Ønsker',
+    tagline: 'Wishlists worth sharing',
+    blurb:
+      'A wishlist app for creating, organising and sharing wishes with friends and family — so gifting is easy and nobody buys the same thing twice.',
+    tags: ['Next.js', 'TypeScript', 'React'],
+    url: 'https://www.oensker.dk',
   },
-  { name: 'Playground finder', blurb: 'Find playgrounds near you. In progress.' },
-  { name: 'Grocery discovery', blurb: 'Local grocery discovery app. In progress.' },
+  {
+    name: 'Vejtilleg',
+    tagline: 'A community-driven playground finder',
+    blurb:
+      'A web and mobile app for finding playgrounds near you — see facilities, photos and reviews, and add new ones yourself. A community-driven map built by and for families. Currently nearing launch.',
+    tags: ['React Native', 'Expo', 'Next.js', 'TypeScript'],
+    url: 'https://vejtilleg.dk',
+  },
+  {
+    name: 'Subgent',
+    tagline: 'Find and track your subscriptions automatically',
+    blurb:
+      'An app that uses open banking to automatically discover recurring payments and remind you before the next charge — so you stay in control of your subscriptions.',
+    tags: ['TypeScript', 'React', 'Open Banking'],
+    url: 'https://subgent.com',
+  },
+  {
+    name: 'Hoestt',
+    tagline: 'A community-driven farm shop finder',
+    blurb:
+      'A web and mobile app for discovering local farm shops — see what each one offers and add new shops to the map yourself. Community-driven, for people who want to buy local. Currently nearing launch.',
+    tags: ['React Native', 'Expo', 'Next.js', 'TypeScript'],
+  },
+  {
+    name: 'Coding Moon',
+    tagline: 'A tiny software studio',
+    blurb:
+      'My one-person studio — designing, building and shipping web and mobile products for companies, taking them the whole way from a rough sketch to something real and well-crafted.',
+    tags: ['Next.js', 'React Native', 'TypeScript'],
+    url: 'https://codingmoon.dk',
+  },
 ];
 
+// What I do — for the About page.
+export const whatIDo = [
+  'Web apps with Next.js, React & TypeScript',
+  'Full-stack systems — APIs, databases, queues & calculation engines',
+  'Mobile apps with React Native & Expo',
+  'Product design and frontend craft — taking ideas to launch',
+];
+
+// "Let's talk" — the contact list on the home page.
+export type ContactLink = { label: string; href: string; icon: 'mail' | 'linkedin' | 'github' };
+
+export const contactLinks: ContactLink[] = [
+  { label: 'Drop me an email', href: 'mailto:mikkel@codingmoon.dk', icon: 'mail' },
+  { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/', icon: 'linkedin' },
+  { label: 'Find me on GitHub', href: 'https://github.com/mikkeldamm', icon: 'github' },
+];
+
+export const contactIntro =
+  'Open to senior full-stack roles and meaningful product collaborations — and always up for a good conversation about building things well.';
+
+// Minimal footer links.
 export const links = [
   { label: 'Email', href: 'mailto:mikkel@codingmoon.dk' },
   { label: 'GitHub', href: 'https://github.com/mikkeldamm' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/' },
-  { label: 'Twitter', href: 'https://twitter.com/MikkelDamm' },
   { label: 'Coding Moon', href: 'https://codingmoon.dev' },
 ];
 
