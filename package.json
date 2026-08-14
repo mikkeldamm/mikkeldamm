@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "cv:pdf": "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --no-pdf-header-footer --print-to-pdf=public/Mikkel-Damm-Vind-CV.pdf http://localhost:3000/cv"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

@@ -1,6 +1,3 @@
-import { PathFollower } from '@/components/PathFollower';
-import { SiteFooter } from '@/components/SiteFooter';
-import { SiteNav } from '@/components/SiteNav';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans } from 'next/font/google';
@@ -62,10 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <PathFollower />
-        <SiteNav />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+        {children}
         <Analytics />
       </body>
     </html>

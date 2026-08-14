@@ -1,0 +1,289 @@
+/* CV page — an on-screen replica of the printed CV.
+   Values mirror the original CV design 1:1; the colors are fixed
+   (always light) because this is a document, not a themed page. */
+
+.cv-root {
+  min-height: 100dvh;
+  background: #e8e5e1;
+  padding: 48px 24px 64px;
+  overflow-x: auto;
+}
+
+.cv-toolbar {
+  width: 8.5in;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.cv-toolbar p {
+  margin: 0;
+  font-size: 12px;
+  color: #8a807c;
+}
+
+.cv-print-btn {
+  border: 1px solid #d5cfc9;
+  border-radius: 999px;
+  background: #faf9f7;
+  padding: 7px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #3a3634;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cv-print-btn:hover {
+  border-color: #d98a5c;
+  color: #d98a5c;
+}
+
+/* One letter-sized page. */
+.cv-page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto 32px;
+  background: #faf9f7;
+  padding: 60px 64px;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #3a3634;
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* Header (page 1) */
+.cv-header {
+  display: grid;
+  grid-template-columns: 106px 1fr;
+  padding-bottom: 44px;
+}
+
+.cv-header-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cv-name {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #d98a5c;
+}
+
+.cv-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+  font-size: 9.5px;
+  line-height: 1.5;
+  color: #8a807c;
+}
+
+.cv-statement {
+  margin: 0;
+  max-width: 19em;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #26221f;
+  text-wrap: pretty;
+}
+
+/* Main grid: label column, content column, sidebar column. */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 84px 1fr 176px;
+  gap: 22px;
+}
+
+.cv-label {
+  margin: 0;
+  padding-top: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #d98a5c;
+}
+
+.cv-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+
+.cv-profile p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Right sidebar (skills on page 1; education etc. on page 2). */
+.cv-side {
+  grid-row: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-left: 20px;
+}
+
+.cv-side-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.cv-side-group--tight {
+  gap: 14px;
+}
+
+.cv-side-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-side-item p {
+  margin: 0;
+  color: #8a807c;
+}
+
+.cv-side-item p:first-child {
+  color: #26221f;
+}
+
+.cv-side-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #8a807c;
+}
+
+.cv-side-list p {
+  margin: 0;
+}
+
+/* A job: meta cell (left) + entry cell (middle). */
+.cv-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 9.5px;
+  line-height: 1.45;
+  color: #8a807c;
+}
+
+.cv-meta-rule {
+  width: 24px;
+  height: 1px;
+  background: #e8d9cb;
+  margin-bottom: 5px;
+}
+
+.cv-meta-company {
+  color: #26221f;
+}
+
+.cv-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cv-entry h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #26221f;
+}
+
+.cv-period {
+  margin: 0 0 2px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #d98a5c;
+}
+
+.cv-entry-summary {
+  margin: 0 0 2px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: #8a807c;
+  text-wrap: pretty;
+}
+
+.cv-entry ul {
+  margin: 0;
+  padding: 0 0 0 13px;
+  list-style: none;
+  font-size: 10.5px;
+  line-height: 1.5;
+}
+
+.cv-entry li {
+  margin: 0 0 4px;
+  position: relative;
+}
+
+.cv-entry li::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 6px;
+  width: 4px;
+  height: 1px;
+  background: #e0bd9c;
+}
+
+/* Print: each .cv-page becomes one PDF page, edge to edge. */
+@page {
+  size: letter;
+  margin: 0;
+}
+
+@media print {
+  .cv-root {
+    min-height: 0;
+    background: none;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .cv-toolbar {
+    display: none;
+  }
+
+  .cv-page {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .cv-page:last-child {
+    break-after: auto;
+  }
+}

@@ -24,10 +24,14 @@ export type Job = {
   company: string;
   role: string;
   period: string;
+  employment: 'Fulltime' | 'Part-time';
   current?: boolean;
   url?: string;
   blurb: string;
 };
+
+// The downloadable CV (rendered to PDF from the CV design).
+export const cvUrl = '/Mikkel-Damm-Vind-CV.pdf';
 
 // "Selected work" — most recent first.
 export const experience: Job[] = [
@@ -35,6 +39,7 @@ export const experience: Job[] = [
     company: 'Målbar',
     role: 'Lead Software Developer',
     period: '2023 — Now',
+    employment: 'Part-time',
     current: true,
     url: 'https://maalbar.dk',
     blurb:
@@ -44,6 +49,7 @@ export const experience: Job[] = [
     company: 'Coding Moon',
     role: 'Software Developer & Owner',
     period: '2018 — Now',
+    employment: 'Fulltime',
     current: true,
     url: 'https://codingmoon.dev',
     blurb:
@@ -53,6 +59,7 @@ export const experience: Job[] = [
     company: 'eManager',
     role: 'Founder & CTO',
     period: '2018 — 2021',
+    employment: 'Fulltime',
     blurb:
       'Co-founded an esports startup as CTO and built the platform from scratch — a manager game on top of live Counter-Strike events: players, matches, tournaments. Grew it into a content platform with partner integrations, a team of 5, and 1M DKK raised.',
   },
@@ -60,6 +67,7 @@ export const experience: Job[] = [
     company: 'Dinero',
     role: 'Senior Frontend Developer',
     period: '2016 — 2019',
+    employment: 'Fulltime',
     blurb:
       'One of Denmark’s leading cloud accounting platforms. Helped move it from an old Backbone codebase to a full Angular SPA. Owned and shipped the kassekladde and bankafstemning — core features used daily by thousands. Backend services in Node.js on Docker; moved the test suite from Selenium to Cypress.',
   },
@@ -67,6 +75,7 @@ export const experience: Job[] = [
     company: 'DFDS',
     role: 'Frontend Developer',
     period: '2015 — 2016',
+    employment: 'Fulltime',
     blurb:
       'Brought modern frontend thinking into an 80+ developer org of mostly C# engineers. Led a full rebuild of dfds.com (SharePoint → headless CMS on React) and rewrote parts of the passenger booking platform from .NET MVC to Angular. Sat on the digital strategy committee, advocating clean code and testing.',
   },
@@ -74,6 +83,7 @@ export const experience: Job[] = [
     company: 'Group Online A/S',
     role: 'Full-Stack Developer → Lead',
     period: '2008 — 2015',
+    employment: 'Fulltime',
     blurb:
       "Came in as a designer; JavaScript pulled me into engineering. Built a CMS from scratch in .NET in my spare time — it became the company's main product and later sold for a significant sum. Grew into lead, heading a team of 8 across Denmark and Ukraine: architecture, frontend, testing, and Scrum.",
   },

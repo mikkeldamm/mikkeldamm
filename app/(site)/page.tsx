@@ -1,11 +1,17 @@
-import { person, experience, products } from '@/components/site-data';
 import { ContactSection } from '@/components/ContactSection';
-import { ArrowUpRight } from '@/components/icons';
+import { ArrowUpRight, DownloadIcon } from '@/components/icons';
+import { cvUrl, experience, person, products } from '@/components/site-data';
 
 export const dynamic = 'force-static';
 
 /** A subdued uppercase label that opens a group within a section. */
-function GroupLabel({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+function GroupLabel({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <h3 className={`text-[0.7rem] font-medium uppercase tracking-[0.18em] text-faint ${className}`}>
       {children}
@@ -65,16 +71,34 @@ export default function Page() {
 
       {/* Experience + own products */}
       <section className="border-t border-line pt-10 md:pt-12">
-        <GroupLabel>Experience</GroupLabel>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <GroupLabel>Experience</GroupLabel>
+          <a
+            href={cvUrl}
+            download="Mikkel Damm Vind CV.pdf"
+            className="group inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink transition-colors hover:border-peach-deep hover:text-peach-deep"
+          >
+            <DownloadIcon className="h-4 w-4 text-faint transition-colors group-hover:text-peach-deep" />
+            CV
+          </a>
+        </div>
         <ol className="mt-6">
           {experience.map((job) => (
-            <li key={job.company + job.period} className="border-t border-line py-7 first:border-t-0 md:py-8">
+            <li
+              key={job.company + job.period}
+              className="border-t border-line py-7 first:border-t-0 md:py-8"
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <WorkTitle name={job.company} url={job.url} current={job.current} />
-                <span className="font-mono text-sm tabular-nums text-faint">{job.period}</span>
+                <span className="font-mono text-sm tabular-nums text-faint flex flex-col">
+                  {job.period}
+                  <span className="ml-auto text-xs mt-1 text-gray-400">{job.employment}</span>
+                </span>
               </div>
               <p className="mt-1 text-base font-medium text-peach-deep">{job.role}</p>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-[1.05rem]">{job.blurb}</p>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-[1.05rem]">
+                {job.blurb}
+              </p>
             </li>
           ))}
         </ol>
@@ -85,7 +109,9 @@ export default function Page() {
             <li key={product.name} className="border-t border-line py-7 first:border-t-0 md:py-8">
               <WorkTitle name={product.name} url={product.url} />
               <p className="mt-1 text-base font-medium text-peach-deep">{product.tagline}</p>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-[1.05rem]">{product.blurb}</p>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted md:text-[1.05rem]">
+                {product.blurb}
+              </p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {product.tags.map((tag) => (
                   <li
