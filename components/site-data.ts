@@ -14,10 +14,10 @@ export const person = {
 
 // The hero / summary — spoken, not bulleted.
 export const intro = [
-  "I’m a self-taught developer with 16+ years of experience — from large-scale booking platforms to SaaS products. Most of that time I’ve spent trying to make things both work well and look good.",
-  "That combination — solid engineering and a real eye for design — is what I’m most proud of. Most devs care about the code or the look. I try to care about both.",
-  "These days I run Coding Moon and lead development at Målbar, building LCA tooling from the ground up — shipping fast while keeping things simple to understand and easy to maintain for whoever touches the code next.",
-  "A lot of how I build now is agentic — I lean on AI coding agents and tight feedback loops to move faster, while staying the person who understands and owns every line that ships.",
+  'I’m a self-taught developer with 18+ years of experience — from large-scale booking platforms to SaaS products. Most of that time I’ve spent trying to make things both work well and look good.',
+  'That combination — solid engineering and a real eye for design — is what I’m most proud of. Most devs care about the code or the look. I try to care about both.',
+  'These days I run Coding Moon and lead development at Målbar, building LCA tooling from the ground up — shipping fast while keeping things simple to understand and easy to maintain for whoever touches the code next.',
+  'A lot of how I build now is agentic — I lean on AI coding agents and tight feedback loops to move faster, while staying the person who understands and owns every line that ships.',
 ];
 
 export type Job = {
@@ -61,7 +61,7 @@ export const experience: Job[] = [
     role: 'Senior Frontend Developer',
     period: '2016 — 2019',
     blurb:
-      "One of Denmark’s leading cloud accounting platforms. Helped move it from an old Backbone codebase to a full Angular SPA. Owned and shipped the kassekladde and bankafstemning — core features used daily by thousands. Backend services in Node.js on Docker; moved the test suite from Selenium to Cypress.",
+      'One of Denmark’s leading cloud accounting platforms. Helped move it from an old Backbone codebase to a full Angular SPA. Owned and shipped the kassekladde and bankafstemning — core features used daily by thousands. Backend services in Node.js on Docker; moved the test suite from Selenium to Cypress.',
   },
   {
     company: 'DFDS',
@@ -75,7 +75,7 @@ export const experience: Job[] = [
     role: 'Full-Stack Developer → Lead',
     period: '2008 — 2015',
     blurb:
-      'Came in as a designer; JavaScript pulled me into engineering. Built a CMS from scratch in .NET in my spare time — it became the company\'s main product and later sold for a significant sum. Grew into lead, heading a team of 8 across Denmark and Ukraine: architecture, frontend, testing, and Scrum.',
+      "Came in as a designer; JavaScript pulled me into engineering. Built a CMS from scratch in .NET in my spare time — it became the company's main product and later sold for a significant sum. Grew into lead, heading a team of 8 across Denmark and Ukraine: architecture, frontend, testing, and Scrum.",
   },
 ];
 
@@ -143,7 +143,11 @@ export type ContactLink = { label: string; href: string; icon: 'mail' | 'linkedi
 
 export const contactLinks: ContactLink[] = [
   { label: 'Drop me an email', href: 'mailto:mikkel@codingmoon.dk', icon: 'mail' },
-  { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/', icon: 'linkedin' },
+  {
+    label: 'Connect on LinkedIn',
+    href: 'https://www.linkedin.com/in/mikkeldamm/',
+    icon: 'linkedin',
+  },
   { label: 'Find me on GitHub', href: 'https://github.com/mikkeldamm', icon: 'github' },
 ];
 

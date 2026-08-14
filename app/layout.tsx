@@ -1,10 +1,10 @@
-import './global.css';
+import { PathFollower } from '@/components/PathFollower';
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteNav } from '@/components/SiteNav';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
-import { PathFollower } from '@/components/PathFollower';
-import { SiteNav } from '@/components/SiteNav';
-import { SiteFooter } from '@/components/SiteFooter';
+import './global.css';
 
 // The whole system is tuned around Instrument Sans — self-hosted at build by next/font.
 const instrument = Instrument_Sans({
@@ -15,7 +15,7 @@ const instrument = Instrument_Sans({
 
 const title = 'Mikkel Damm Vind — Senior Full-Stack Developer';
 const description =
-  'Self-taught full-stack developer from Copenhagen with 16+ years of experience. Frontend roots, full-stack reach — building things that work well and look good.';
+  'Self-taught full-stack developer from Copenhagen with 18+ years of experience. Frontend roots, full-stack reach — building things that work well and look good.';
 const url = 'https://mikkeldamm.com';
 
 export const metadata: Metadata = {

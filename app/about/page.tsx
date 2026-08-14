@@ -1,7 +1,7 @@
+import { ArrowUpRight } from '@/components/icons';
+import { intro, person, whatIDo } from '@/components/site-data';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { person, intro, whatIDo } from '@/components/site-data';
-import { ArrowUpRight } from '@/components/icons';
 
 export const dynamic = 'force-static';
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
 
 /** Wrap a few key phrases in <strong> for rhythm. */
 function emphasize(text: string): string {
-  const phrases = ['16+ years', 'work well and look good'];
+  const phrases = ['18+ years', 'work well and look good'];
   let out = text;
   for (const phrase of phrases) {
     out = out.replace(phrase, `<strong>${phrase}</strong>`);
