@@ -35,14 +35,6 @@ export function ArrowUpRight(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 4v11m0 0 5-5m-5 5-5-5M4 20h16" />
-    </svg>
-  );
-}
-
 export function SunIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" {...props}>

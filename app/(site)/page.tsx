@@ -1,5 +1,5 @@
 import { ContactSection } from '@/components/ContactSection';
-import { ArrowUpRight, DownloadIcon } from '@/components/icons';
+import { ArrowUpRight } from '@/components/icons';
 import { cvUrl, experience, person, products } from '@/components/site-data';
 
 export const dynamic = 'force-static';
@@ -75,11 +75,10 @@ export default function Page() {
           <GroupLabel>Experience</GroupLabel>
           <a
             href={cvUrl}
-            download="Mikkel Damm Vind CV.pdf"
             className="group inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-sm font-medium text-ink transition-colors hover:border-peach-deep hover:text-peach-deep"
           >
-            <DownloadIcon className="h-4 w-4 text-faint transition-colors group-hover:text-peach-deep" />
             CV
+            <ArrowUpRight className="h-4 w-4 text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-peach-deep" />
           </a>
         </div>
         <ol className="mt-6">

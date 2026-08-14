@@ -30,8 +30,8 @@ export type Job = {
   blurb: string;
 };
 
-// The downloadable CV (rendered to PDF from the CV design).
-export const cvUrl = '/Mikkel-Damm-Vind-CV.pdf';
+// The CV page — print it (or run `pnpm cv:pdf`) to get the PDF.
+export const cvUrl = '/cv';
 
 // "Selected work" — most recent first.
 export const experience: Job[] = [
