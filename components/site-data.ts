@@ -51,7 +51,7 @@ export const experience: Job[] = [
     period: '2018 — Now',
     employment: 'Fulltime',
     current: true,
-    url: 'https://codingmoon.dev',
+    url: 'https://codingmoon.com',
     blurb:
       'My own studio. Client work includes the Målbar platform, the public website big.dk for Bjarke Ingels Group, an internal dashboard for Zignifikant, and CRM integrations for Spilbræt. On the side: my own products — Ønsker, Instabolig, and a couple of apps in progress.',
   },
@@ -97,7 +97,7 @@ export type Product = {
   url?: string;
 };
 
-// Own products — mirrored from codingmoon.dk.
+// Own products — mirrored from codingmoon.com.
 export const products: Product[] = [
   {
     name: 'Ønsker',
@@ -136,7 +136,7 @@ export const products: Product[] = [
     blurb:
       'My one-person studio — designing, building and shipping web and mobile products for companies, taking them the whole way from a rough sketch to something real and well-crafted.',
     tags: ['Next.js', 'React Native', 'TypeScript'],
-    url: 'https://codingmoon.dk',
+    url: 'https://codingmoon.com',
   },
 ];
 
@@ -169,5 +169,5 @@ export const links = [
   { label: 'Email', href: 'mailto:mikkel@codingmoon.dk' },
   { label: 'GitHub', href: 'https://github.com/mikkeldamm' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mikkeldamm/' },
-  { label: 'Coding Moon', href: 'https://codingmoon.dev' },
+  { label: 'Coding Moon', href: 'https://codingmoon.com' },
 ];
