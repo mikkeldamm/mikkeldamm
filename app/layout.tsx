@@ -1,8 +1,8 @@
+import { JsonLd } from '@/components/JsonLd';
+import { experience, links, person, products } from '@/components/site-data';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans } from 'next/font/google';
-import { JsonLd } from '@/components/JsonLd';
-import { experience, links, person, products } from '@/components/site-data';
 import './global.css';
 
 // The whole system is tuned around Instrument Sans — self-hosted at build by next/font.
@@ -12,7 +12,7 @@ const instrument = Instrument_Sans({
   display: 'swap',
 });
 
-const title = 'Mikkel Damm Vind — Senior Full-Stack Developer';
+const title = 'Mikkel Damm Vind — Senior Freelance Software Developer';
 const description =
   'Self-taught full-stack developer from Copenhagen with 18+ years of experience. Frontend roots, full-stack reach — building things that work well and look good.';
 const url = 'https://mikkeldamm.com';

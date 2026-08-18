@@ -3,7 +3,7 @@
 
 export const person = {
   name: 'Mikkel Damm Vind',
-  role: 'Senior Full-Stack Developer',
+  role: 'Senior Freelance Software Developer',
   tagline: 'Frontend roots, full-stack reach.',
   location: 'Copenhagen, Denmark',
   email: 'mikkel@codingmoon.dk',
