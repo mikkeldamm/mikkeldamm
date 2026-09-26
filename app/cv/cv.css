@@ -265,6 +265,10 @@
   margin: 0;
 }
 
+/* The print layout is applied two ways: by the print media query (desktop
+   print, headless Chrome), and by the .cv-printing class that PrintButton sets
+   on <html> around printing. iOS Safari renders the print with the screen
+   styles, so the class is what gives it the paper layout there. */
 @media print {
   .cv-root {
     min-height: 0;
@@ -290,16 +294,30 @@
   }
 }
 
-/* iOS Safari prints on the device's paper (usually A4) and lays the page out
-   1.25× wider than the sheet before shrinking it to fit, so a letter-sized
-   page ends up at ~80% in the corner of the sheet. Zooming each page past
-   that layout width makes WebKit shrink it to exactly the sheet width; the
-   forced breaks above keep every CV page on its own sheet.
-   (-webkit-touch-callout only exists in iOS/iPadOS Safari.) */
-@supports (-webkit-touch-callout: none) {
-  @media print {
-    .cv-page {
-      zoom: 1.25;
-    }
-  }
+/* Keeps the page light behind the CV even when the site is in dark mode. */
+html.cv-printing body {
+  background: #faf9f7;
+}
+
+html.cv-printing .cv-root {
+  min-height: 0;
+  background: none;
+  padding: 0;
+  overflow: visible;
+}
+
+html.cv-printing .cv-toolbar {
+  display: none;
+}
+
+html.cv-printing .cv-page {
+  margin: 0;
+  box-shadow: none;
+  page-break-after: always;
+  break-after: page;
+}
+
+html.cv-printing .cv-page:last-child {
+  page-break-after: auto;
+  break-after: auto;
 }
