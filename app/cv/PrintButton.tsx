@@ -1,12 +1,26 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Class that switches the page into its print layout — see cv.css.
 const PRINTING_CLASS = 'cv-printing';
 
-/** Triggers the browser print dialog — "Save as PDF" produces the CV. */
+// Pre-rendered copy of this page — regenerate with `pnpm cv:pdf`.
+const PDF_URL = '/Mikkel-Damm-Vind-CV.pdf';
+
+/**
+ * Triggers the browser print dialog — "Save as PDF" produces the CV.
+ * On iOS it links to the pre-rendered PDF instead: iOS Safari always stamps
+ * its own header and footer (title, URL, page numbers) on printouts.
+ */
 export function PrintButton() {
+  const [isIos, setIsIos] = useState(false);
+
+  // -webkit-touch-callout only exists in iOS/iPadOS Safari.
+  useEffect(() => {
+    setIsIos(CSS.supports('-webkit-touch-callout', 'none'));
+  }, []);
+
   // iOS Safari prints with the screen styles and ignores @media print, so the
   // print layout is also toggled with a class around every print (including
   // prints started from the browser's own menu).
@@ -29,6 +43,14 @@ export function PrintButton() {
   function print() {
     document.documentElement.classList.add(PRINTING_CLASS);
     window.print();
+  }
+
+  if (isIos) {
+    return (
+      <a href={PDF_URL} download="Mikkel Damm Vind CV.pdf" className="cv-print-btn">
+        Download PDF
+      </a>
+    );
   }
 
   return (

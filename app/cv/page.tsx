@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 /* ------------------------------------------------------------------ */
-/* CV content — edit here, then print the page to refresh the PDF.     */
+/* CV content — edit here, then run `pnpm cv:pdf` to refresh the PDF.  */
 /* ------------------------------------------------------------------ */
 
 const contact = [

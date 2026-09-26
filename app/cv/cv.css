@@ -33,6 +33,7 @@
   font-size: 12px;
   font-weight: 500;
   color: #3a3634;
+  text-decoration: none;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
