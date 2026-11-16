@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Fragment } from 'react';
 import { PrintButton } from './PrintButton';
 import './cv.css';
 
@@ -14,19 +15,20 @@ export const metadata: Metadata = {
 /* CV content — edit here, then run `pnpm cv:pdf` to refresh the PDF.  */
 /* ------------------------------------------------------------------ */
 
-const contact = [
-  'mikkel@codingmoon.dk',
-  '+45 21 74 67 66',
-  'codingmoon.dk',
-  'mikkeldamm.dk',
-  'linkedin.com/in/mikkeldamm',
-  'Copenhagen, Denmark',
+const name = 'Mikkel Damm Vind';
+const title = 'Senior Full-Stack Developer';
+
+const contact: { label: string; href?: string }[] = [
+  { label: 'Copenhagen, Denmark' },
+  { label: '+45 21 74 67 66', href: 'tel:+4521746766' },
+  { label: 'mikkel@codingmoon.dk', href: 'mailto:mikkel@codingmoon.dk' },
+  { label: 'linkedin.com/in/mikkeldamm', href: 'https://www.linkedin.com/in/mikkeldamm' },
+  { label: 'mikkeldamm.dk', href: 'https://mikkeldamm.dk' },
+  { label: 'codingmoon.dk', href: 'https://codingmoon.dk' },
 ];
 
-const statement =
-  'Senior full-stack developer, 18+ years in. Frontend roots, full-stack reach — from booking platforms at scale to SaaS products and climate-tech tooling.';
-
-const profile = [
+const summary = [
+  'Senior full-stack developer, 18+ years in. Frontend roots, full-stack reach — from booking platforms at scale to SaaS products and climate-tech tooling.',
   'Equally at home in database design, queues and calculation engines as in interface craft and product design. Strongest on the bigger picture: systems, architecture, and how the pieces fit together.',
   "I've built products end to end as a solo developer, led teams of up to 8 across borders, co-founded and served as CTO of a startup, and shipped features used daily by thousands of users.",
   'A lot of how I build today is agentic: AI coding agents and tight feedback loops for speed, while staying the person who understands and owns every line that ships.',
@@ -43,7 +45,7 @@ const skills = [
   },
   {
     title: 'Backend & data',
-    body: "Node.js, PostgreSQL, MySQL, REST API's, queues & background jobs, calculation engines, Docker",
+    body: 'Node.js, PostgreSQL, MySQL, REST APIs, queues & background jobs, calculation engines, Docker',
   },
   {
     title: 'Product & architecture',
@@ -61,20 +63,20 @@ const skills = [
 
 type CvJob = {
   company: string;
-  employment: 'Fulltime' | 'Part-time';
+  employment: 'Full-time' | 'Part-time';
   role: string;
   period: string;
   summary: string;
   bullets: string[];
 };
 
-// Jobs are split by page — move entries between the arrays if content grows.
-const jobsPageOne: CvJob[] = [
+// Most recent first.
+const jobs: CvJob[] = [
   {
     company: 'Målbar',
     employment: 'Part-time',
     role: 'Lead Software Developer',
-    period: 'Jun 2023 – Current',
+    period: 'Jun 2023 – Present',
     summary:
       'Danish sustainability platform helping companies measure and reduce environmental impact through life cycle assessment (LCA).',
     bullets: [
@@ -85,9 +87,9 @@ const jobsPageOne: CvJob[] = [
   },
   {
     company: 'Coding Moon ApS',
-    employment: 'Fulltime',
+    employment: 'Full-time',
     role: 'Software Developer & Owner',
-    period: 'Oct 2018 – Current',
+    period: 'Oct 2018 – Present',
     summary:
       'One-person software studio taking web and mobile products from rough sketch to launch, for clients and as own products.',
     bullets: [
@@ -96,12 +98,9 @@ const jobsPageOne: CvJob[] = [
       'Full ownership of design, architecture, delivery and client relationships — no hand-offs.',
     ],
   },
-];
-
-const jobsPageTwo: CvJob[] = [
   {
     company: 'eManager',
-    employment: 'Fulltime',
+    employment: 'Full-time',
     role: 'Founder & CTO',
     period: 'Dec 2018 – Oct 2021',
     summary: 'eSport manager game built for real Counter-Strike events.',
@@ -113,7 +112,7 @@ const jobsPageTwo: CvJob[] = [
   },
   {
     company: 'Dinero',
-    employment: 'Fulltime',
+    employment: 'Full-time',
     role: 'Senior Frontend Developer',
     period: 'Sep 2016 – Oct 2019',
     summary: "One of Denmark's leading cloud-based accounting platforms for small businesses.",
@@ -125,7 +124,7 @@ const jobsPageTwo: CvJob[] = [
   },
   {
     company: 'DFDS',
-    employment: 'Fulltime',
+    employment: 'Full-time',
     role: 'Frontend Developer',
     period: 'Feb 2015 – Sep 2016',
     summary: 'Ferry and logistics network in and around Europe.',
@@ -137,8 +136,8 @@ const jobsPageTwo: CvJob[] = [
   },
   {
     company: 'Group Online A/S',
-    employment: 'Fulltime',
-    role: 'Full-Stack Developer → Lead Developer',
+    employment: 'Full-time',
+    role: 'Full-Stack Developer, later Lead Developer',
     period: 'Feb 2008 – Jan 2015',
     summary: 'First large web agency with 20,000+ customers.',
     bullets: [
@@ -149,6 +148,10 @@ const jobsPageTwo: CvJob[] = [
   },
 ];
 
+// How many jobs fit on page 1 — the rest continue at the top of page 2.
+// Pages have a fixed height, so lower this if page 1 grows.
+const JOBS_ON_PAGE_ONE = 3;
+
 const education = {
   school: 'Frederiksberg HTX',
   degree: 'Higher Technical Examination (HTX), Information Technology',
@@ -156,13 +159,13 @@ const education = {
 };
 
 const certifications = [
-  { name: 'Certified Agile Tester (CAT)', issuer: 'iSQI GmbH · Jan 2014' },
-  { name: 'ISTQB Software Tester Foundation', issuer: 'ISTQB / DELTA · Oct 2011' },
+  { name: 'Certified Agile Tester (CAT)', issuer: 'iSQI GmbH', date: 'Jan 2014' },
+  { name: 'ISTQB Software Tester Foundation', issuer: 'ISTQB / DELTA', date: 'Oct 2011' },
 ];
 
 const languages = [
-  { name: 'Danish', level: 'native' },
-  { name: 'English', level: 'fluent, professional working proficiency' },
+  { name: 'Danish', level: 'Native' },
+  { name: 'English', level: 'Fluent, professional working proficiency' },
 ];
 
 const industries = [
@@ -180,27 +183,43 @@ const industries = [
 /* Rendering                                                           */
 /* ------------------------------------------------------------------ */
 
-/** One job = a meta cell (company + employment) and an entry cell. */
-function JobEntry({ job, padTop = 0 }: { job: CvJob; padTop?: number }) {
-  const pad = padTop ? { paddingTop: padTop } : undefined;
+// One column in reading order, with plain-text headings an ATS recognises —
+// the PDF's text layer then reads top to bottom exactly as the page does.
+
+function CvSection({ title, children }: { title?: string; children: React.ReactNode }) {
+  return (
+    <section className="cv-section">
+      {title && <h2 className="cv-heading">{title}</h2>}
+      {children}
+    </section>
+  );
+}
+
+/**
+ * A bold title over a "who · when" line — a role, a degree or a certificate.
+ * Dates sit inline rather than right-aligned: parsers often read a
+ * right-aligned date as a separate block and lose which entry it belongs to.
+ */
+function EntryHead({ title, details }: { title: string; details: string[] }) {
   return (
     <>
-      <div className="cv-meta" style={pad}>
-        <div className="cv-meta-rule" />
-        <span className="cv-meta-company">{job.company}</span>
-        <span>{job.employment}</span>
-      </div>
-      <div className="cv-entry" style={pad}>
-        <h3>{job.role}</h3>
-        <p className="cv-period">{job.period}</p>
-        <p className="cv-entry-summary">{job.summary}</p>
-        <ul>
-          {job.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
-      </div>
+      <h3 className="cv-entry-title">{title}</h3>
+      <p className="cv-entry-org">{details.join(' · ')}</p>
     </>
+  );
+}
+
+function JobEntry({ job }: { job: CvJob }) {
+  return (
+    <div className="cv-entry">
+      <EntryHead title={job.role} details={[job.company, job.employment, job.period]} />
+      <p className="cv-entry-note">{job.summary}</p>
+      <ul className="cv-bullets">
+        {job.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -212,94 +231,82 @@ export default function CvPage() {
         <PrintButton />
       </div>
 
-      {/* Page 1 — header, profile, skills, current roles */}
-      <section className="cv-page">
+      {/* Page 1 — header, summary, skills, most recent roles */}
+      <div className="cv-page">
         <header className="cv-header">
-          <div />
-          <div className="cv-header-body">
-            <div className="cv-header-top">
-              <p className="cv-name">Mikkel Damm Vind</p>
-              <div className="cv-contact">
-                {contact.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </div>
-            </div>
-            <h1 className="cv-statement">{statement}</h1>
-          </div>
+          <h1 className="cv-name">{name}</h1>
+          <p className="cv-title">{title}</p>
+          <p className="cv-contact">
+            {contact.map((item, i) => (
+              <Fragment key={item.label}>
+                {i > 0 && ' · '}
+                {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+              </Fragment>
+            ))}
+          </p>
         </header>
 
-        <div className="cv-grid">
-          <p className="cv-label">Profile</p>
-          <div className="cv-profile">
-            {profile.map((paragraph) => (
+        <CvSection title="Summary">
+          <div className="cv-summary">
+            {summary.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <aside className="cv-side">
-            <div className="cv-side-group cv-side-group--tight">
-              <p className="cv-label">Skills</p>
-              {skills.map((skill) => (
-                <div key={skill.title} className="cv-side-item">
-                  <p>{skill.title}</p>
-                  <p>{skill.body}</p>
-                </div>
-              ))}
-            </div>
-          </aside>
+        </CvSection>
 
-          <JobEntry job={jobsPageOne[0]} padTop={26} />
-          <JobEntry job={jobsPageOne[1]} padTop={20} />
-        </div>
-      </section>
+        <CvSection title="Skills">
+          <ul className="cv-list">
+            {skills.map((skill) => (
+              <li key={skill.title}>
+                <strong>{skill.title}:</strong> {skill.body}
+              </li>
+            ))}
+          </ul>
+        </CvSection>
+
+        <CvSection title="Experience">
+          {jobs.slice(0, JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
+          ))}
+        </CvSection>
+      </div>
 
       {/* Page 2 — earlier roles, education, certifications, languages, industries */}
-      <section className="cv-page">
-        <div className="cv-grid">
-          <JobEntry job={jobsPageTwo[0]} />
-          <aside className="cv-side">
-            <div className="cv-side-group">
-              <p className="cv-label">Education</p>
-              <div className="cv-side-item">
-                <p>{education.school}</p>
-                <p>{education.degree}</p>
-                <p>{education.period}</p>
-              </div>
-            </div>
-            <div className="cv-side-group">
-              <p className="cv-label">Certifications</p>
-              {certifications.map((cert) => (
-                <div key={cert.name} className="cv-side-item">
-                  <p>{cert.name}</p>
-                  <p>{cert.issuer}</p>
-                </div>
-              ))}
-            </div>
-            <div className="cv-side-group">
-              <p className="cv-label">Languages</p>
-              <div className="cv-side-list">
-                {languages.map((language) => (
-                  <p key={language.name}>
-                    <span className="cv-meta-company">{language.name}</span> — {language.level}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <div className="cv-side-group">
-              <p className="cv-label">Industries</p>
-              <div className="cv-side-list">
-                {industries.map((industry) => (
-                  <p key={industry}>{industry}</p>
-                ))}
-              </div>
-            </div>
-          </aside>
-
-          {jobsPageTwo.slice(1).map((job) => (
-            <JobEntry key={job.company} job={job} padTop={20} />
+      <div className="cv-page">
+        <CvSection>
+          {jobs.slice(JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
           ))}
-        </div>
-      </section>
+        </CvSection>
+
+        <CvSection title="Education">
+          <div className="cv-entry">
+            <EntryHead title={education.degree} details={[education.school, education.period]} />
+          </div>
+        </CvSection>
+
+        <CvSection title="Certifications">
+          {certifications.map((cert) => (
+            <div key={cert.name} className="cv-entry">
+              <EntryHead title={cert.name} details={[cert.issuer, cert.date]} />
+            </div>
+          ))}
+        </CvSection>
+
+        <CvSection title="Languages">
+          <ul className="cv-list">
+            {languages.map((language) => (
+              <li key={language.name}>
+                <strong>{language.name}:</strong> {language.level}
+              </li>
+            ))}
+          </ul>
+        </CvSection>
+
+        <CvSection title="Industries">
+          <p>{industries.join(' · ')}</p>
+        </CvSection>
+      </div>
     </main>
   );
 }
