@@ -1,14 +1,50 @@
 /* CV page — an on-screen replica of the printed CV.
-   Laid out for applicant tracking systems as much as for people: a single
-   column in reading order, real text only (no icons, bars or text boxes),
-   standard section headings, and black on white. The colors are fixed
-   (always light) because this is a document, not a themed page. */
+   Light and editorial: an uppercase, lightly tracked name and section
+   headings, plenty of air, and one accent (the site's peach) on the bullets.
+   It is laid out for applicant tracking systems as much as for people: a
+   single column in reading order, real text only (no icons, bars or text
+   boxes) and standard section headings. The colors are fixed (always light)
+   because this is a document, not a themed page. */
+
+/* Static Inter files from /public. They are TrueType-outlined, so Chrome
+   embeds them as TrueType in the PDF (variable and CFF fonts can end up as
+   Type 3, which some ATS parsers read poorly), and they render the same on
+   every OS that prints the page. */
+@font-face {
+  font-family: 'CV Inter';
+  src: url('/fonts/Inter/Inter-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CV Inter';
+  src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CV Inter';
+  src: url('/fonts/Inter/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 .cv-root {
+  --cv-ink: #1c1a17;
+  --cv-text: #3a3733;
+  --cv-muted: #77716a;
+  --cv-accent: #d98a5c;
+
   min-height: 100dvh;
-  background: #e6e6e6;
+  background: #ebe9e5;
   padding: 48px 24px 64px;
   overflow-x: auto;
+  font-family: 'CV Inter', Helvetica, Arial, sans-serif;
 }
 
 .cv-toolbar {
@@ -18,30 +54,30 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .cv-toolbar p {
   margin: 0;
   font-size: 12px;
-  color: #666;
+  color: #6f6a63;
 }
 
 .cv-print-btn {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #c9c5be;
   border-radius: 999px;
   background: #fff;
   padding: 7px 18px;
+  font: inherit;
   font-size: 12px;
-  font-weight: 500;
-  color: #111;
+  font-weight: 400;
+  color: var(--cv-ink);
   text-decoration: none;
   cursor: pointer;
   transition: border-color 0.15s;
 }
 
 .cv-print-btn:hover {
-  border-color: #111;
+  border-color: var(--cv-ink);
 }
 
 /* One letter-sized page. */
@@ -50,21 +86,18 @@
   height: 11in;
   margin: 0 auto 32px;
   background: #fff;
-  padding: 0.6in 0.7in;
+  padding: 0.72in 0.9in;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  /* Fonts that embed as TrueType in Chrome's PDFs on every OS. (Some systems
-     map "Helvetica Neue" to an OpenType font Chrome embeds as Type 3, which
-     some ATS parsers read poorly.) */
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: #111;
+  gap: 24px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--cv-text);
   /* Keeps "fi"/"fl" as separate letters in the PDF text, so keywords match. */
   font-variant-ligatures: none;
-  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.14);
+  border-radius: 6px;
+  box-shadow: 0 4px 28px rgba(40, 32, 20, 0.1);
   overflow: hidden;
 }
 
@@ -78,41 +111,59 @@
 }
 
 .cv-page strong {
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--cv-ink);
+}
+
+/* Uppercase text is tracked by 0.06em at most, with kerning off. Wider gaps
+   make PDF text extraction read them as word breaks ("S U M M A R Y") and the
+   ATS misses the heading; kerning adds to some of them (L-A in "LANGUAGES"). */
+.cv-name,
+.cv-heading,
+.cv-job-title {
+  font-kerning: none;
+  text-transform: uppercase;
 }
 
 /* Header (page 1) */
+.cv-header {
+  padding-bottom: 6px;
+}
+
 .cv-name {
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  color: var(--cv-ink);
 }
 
 .cv-title {
-  margin-top: 3px;
+  margin-top: 10px;
   font-size: 13px;
+  color: var(--cv-muted);
 }
 
 .cv-contact {
-  margin-top: 8px;
-  font-size: 10px;
-  color: #444;
+  margin-top: 4px;
+  font-size: 9.5px;
+  color: var(--cv-muted);
 }
 
-/* Sections. No letter-spacing anywhere: PDF text extraction reads tracked
-   letters as separate words ("S UM MARY"), and the ATS misses the heading. */
+/* Sections */
 .cv-heading {
-  margin-bottom: 8px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid #111;
-  font-size: 13px;
-  font-weight: 700;
+  margin-bottom: 7px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  color: var(--cv-ink);
 }
 
 .cv-summary {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .cv-summary p {
@@ -125,37 +176,60 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 /* An entry: a role, a degree or a certificate. */
 .cv-entry + .cv-entry {
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .cv-entry-title {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--cv-ink);
 }
 
-.cv-entry-org {
-  margin-top: 1px;
+/* A role's heading: "ROLE · COMPANY · PERIOD" in small caps-style uppercase. */
+.cv-job-title {
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--cv-ink);
+}
+
+.cv-job-period {
+  font-weight: 400;
+  color: var(--cv-muted);
 }
 
 .cv-entry-note {
   margin-top: 2px;
-  color: #555;
+  color: var(--cv-muted);
   text-wrap: pretty;
 }
 
 .cv-bullets {
-  margin-top: 4px;
-  padding-left: 14px;
-  /* A text bullet (not a drawn disc) so each point starts with "•" in the PDF text. */
-  list-style-type: '•  ';
+  margin-top: 5px;
+  padding-left: 16px;
+  /* A real bullet character (U+2023, triangular bullet), so each point still
+     starts with a bullet in the PDF text. */
+  list-style-type: '\2023\00a0\00a0';
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* A size up from the text so the triangle reads, with line-height 1 so it
+   doesn't make its line taller. */
+.cv-bullets li::marker {
+  font:
+    600 1.25em/1 'CV Inter',
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--cv-accent);
 }
 
 /* Print: each .cv-page becomes one PDF page, edge to edge. */
@@ -182,6 +256,7 @@
 
   .cv-page {
     margin: 0;
+    border-radius: 0;
     box-shadow: none;
     page-break-after: always;
     break-after: page;
@@ -211,6 +286,7 @@ html.cv-printing .cv-toolbar {
 
 html.cv-printing .cv-page {
   margin: 0;
+  border-radius: 0;
   box-shadow: none;
   page-break-after: always;
   break-after: page;

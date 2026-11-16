@@ -21,10 +21,8 @@ const title = 'Senior Full-Stack Developer';
 const contact: { label: string; href?: string }[] = [
   { label: 'Copenhagen, Denmark' },
   { label: '+45 21 74 67 66', href: 'tel:+4521746766' },
-  { label: 'mikkel@codingmoon.dk', href: 'mailto:mikkel@codingmoon.dk' },
-  { label: 'linkedin.com/in/mikkeldamm', href: 'https://www.linkedin.com/in/mikkeldamm' },
+  { label: 'mikkel@dammvind.dk', href: 'mailto:mikkel@dammvind.dk' },
   { label: 'mikkeldamm.dk', href: 'https://mikkeldamm.dk' },
-  { label: 'codingmoon.dk', href: 'https://codingmoon.dk' },
 ];
 
 const summary = [
@@ -148,9 +146,15 @@ const jobs: CvJob[] = [
   },
 ];
 
+// The CV's own font files (see cv.css) — fetched up front so they are ready
+// before anyone prints, or headless Chrome renders the PDF.
+const fontFiles = ['Inter-Light', 'Inter-Regular', 'Inter-SemiBold'].map(
+  (file) => `/fonts/Inter/${file}.woff2`
+);
+
 // How many jobs fit on page 1 — the rest continue at the top of page 2.
 // Pages have a fixed height, so lower this if page 1 grows.
-const JOBS_ON_PAGE_ONE = 3;
+const JOBS_ON_PAGE_ONE = 4;
 
 const education = {
   school: 'Frederiksberg HTX',
@@ -209,10 +213,17 @@ function EntryHead({ title, details }: { title: string; details: string[] }) {
   );
 }
 
+/**
+ * "ROLE · COMPANY · PERIOD" on one line, as the role's heading. Full-time is
+ * the default, so only part-time roles are marked.
+ */
 function JobEntry({ job }: { job: CvJob }) {
+  const role = job.employment === 'Part-time' ? `${job.role} (Part-time)` : job.role;
   return (
     <div className="cv-entry">
-      <EntryHead title={job.role} details={[job.company, job.employment, job.period]} />
+      <h3 className="cv-job-title">
+        {role} · {job.company} <span className="cv-job-period">· {job.period}</span>
+      </h3>
       <p className="cv-entry-note">{job.summary}</p>
       <ul className="cv-bullets">
         {job.bullets.map((bullet) => (
@@ -226,12 +237,24 @@ function JobEntry({ job }: { job: CvJob }) {
 export default function CvPage() {
   return (
     <main className="cv-root">
+      {/* React hoists these into <head>. */}
+      {fontFiles.map((href) => (
+        <link
+          key={href}
+          rel="preload"
+          href={href}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      ))}
+
       <div className="cv-toolbar">
         <p>Letter format · prints edge to edge with no margins</p>
         <PrintButton />
       </div>
 
-      {/* Page 1 — header, summary, skills, most recent roles */}
+      {/* Page 1 — header, summary, most recent roles */}
       <div className="cv-page">
         <header className="cv-header">
           <h1 className="cv-name">{name}</h1>
@@ -254,6 +277,21 @@ export default function CvPage() {
           </div>
         </CvSection>
 
+        <CvSection title="Experience">
+          {jobs.slice(0, JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
+          ))}
+        </CvSection>
+      </div>
+
+      {/* Page 2 — earlier roles, skills, education, certifications, languages, industries */}
+      <div className="cv-page">
+        <CvSection>
+          {jobs.slice(JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
+          ))}
+        </CvSection>
+
         <CvSection title="Skills">
           <ul className="cv-list">
             {skills.map((skill) => (
@@ -262,21 +300,6 @@ export default function CvPage() {
               </li>
             ))}
           </ul>
-        </CvSection>
-
-        <CvSection title="Experience">
-          {jobs.slice(0, JOBS_ON_PAGE_ONE).map((job) => (
-            <JobEntry key={job.company} job={job} />
-          ))}
-        </CvSection>
-      </div>
-
-      {/* Page 2 — earlier roles, education, certifications, languages, industries */}
-      <div className="cv-page">
-        <CvSection>
-          {jobs.slice(JOBS_ON_PAGE_ONE).map((job) => (
-            <JobEntry key={job.company} job={job} />
-          ))}
         </CvSection>
 
         <CvSection title="Education">
