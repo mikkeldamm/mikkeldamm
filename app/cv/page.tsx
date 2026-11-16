@@ -154,7 +154,7 @@ const fontFiles = ['Inter-Light', 'Inter-Regular', 'Inter-SemiBold'].map(
 
 // How many jobs fit on page 1 — the rest continue at the top of page 2.
 // Pages have a fixed height, so lower this if page 1 grows.
-const JOBS_ON_PAGE_ONE = 3;
+const JOBS_ON_PAGE_ONE = 4;
 
 const education = {
   school: 'Frederiksberg HTX',
@@ -254,7 +254,7 @@ export default function CvPage() {
         <PrintButton />
       </div>
 
-      {/* Page 1 — header, summary, skills, most recent roles */}
+      {/* Page 1 — header, summary, most recent roles */}
       <div className="cv-page">
         <header className="cv-header">
           <h1 className="cv-name">{name}</h1>
@@ -277,6 +277,21 @@ export default function CvPage() {
           </div>
         </CvSection>
 
+        <CvSection title="Experience">
+          {jobs.slice(0, JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
+          ))}
+        </CvSection>
+      </div>
+
+      {/* Page 2 — earlier roles, skills, education, certifications, languages, industries */}
+      <div className="cv-page">
+        <CvSection>
+          {jobs.slice(JOBS_ON_PAGE_ONE).map((job) => (
+            <JobEntry key={job.company} job={job} />
+          ))}
+        </CvSection>
+
         <CvSection title="Skills">
           <ul className="cv-list">
             {skills.map((skill) => (
@@ -285,21 +300,6 @@ export default function CvPage() {
               </li>
             ))}
           </ul>
-        </CvSection>
-
-        <CvSection title="Experience">
-          {jobs.slice(0, JOBS_ON_PAGE_ONE).map((job) => (
-            <JobEntry key={job.company} job={job} />
-          ))}
-        </CvSection>
-      </div>
-
-      {/* Page 2 — earlier roles, education, certifications, languages, industries */}
-      <div className="cv-page">
-        <CvSection>
-          {jobs.slice(JOBS_ON_PAGE_ONE).map((job) => (
-            <JobEntry key={job.company} job={job} />
-          ))}
         </CvSection>
 
         <CvSection title="Education">
